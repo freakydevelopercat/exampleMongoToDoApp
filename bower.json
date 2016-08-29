@@ -1,0 +1,21 @@
+{
+  "name": "AngularJS_Authentication",
+  "description": "AngularJS-Authentication",
+  "main": "server.js",
+  "authors": [
+    "nina fat"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ng-img-crop": "ngImgCrop#^0.3.2"
+  }
+}

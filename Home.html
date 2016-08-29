@@ -1,0 +1,49 @@
+﻿<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>To do app</title>
+    <!-- Jquery added -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://rawgit.com/dbtek/angular-aside/master/dist/css/angular-aside.css"/>
+    <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css"/>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+    <script src="bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js"></script>
+     <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css">
+    <link rel="stylesheet" href="bower_components/font-awesome-4.5.0/css/font-awesome.min.css">
+
+
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script src="bower_components/fullcalendar/dist/gcal.js"></script>
+
+</head>
+<body style="backround-color: grey!important;">
+    <div  ng-app="securityApp" >
+      <div class="container">
+      <div ng-view></div>  
+      </div>
+    </div>
+        <!--
+    <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script> -->
+
+
+    <script src="https://rawgit.com/dbtek/angular-aside/master/dist/js/angular-aside.js"></script>
+    <script src="javascripts/SecurityApp.js"></script>
+    <script src="javascripts/factory/authenticationSvc.js"></script>
+    <script src="javascripts/controllers/HomeController.js"></script>
+    <script src="javascripts/controllers/LoginController.js"></script>
+    <script src="javascripts/controllers/TodoController.js"></script>
+    <script src="javascripts/controllers/MailController.js"></script>
+    <script src="javascripts/controllers/ImageUploadController.js"></script>
+    <script src="javascripts/directives/calendar.js"></script>
+    <script src="javascripts/controllers/CalendarController.js"></script>
+    <!-- added scripts  -->
+</body>
+</html>

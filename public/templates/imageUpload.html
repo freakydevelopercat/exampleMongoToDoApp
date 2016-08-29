@@ -1,0 +1,56 @@
+
+  <button type="button" class="btn btn-default btn-lg grey" ng-click="openAside('left', true)">
+        <span class="glyphicon glyphicon-align-justify white"></span>
+  </button>
+  <div>
+
+        <h1>Angular Node File Upload</h1>
+        <form  name="upload_form" ng-model="upload_form">
+                Single Image with validations
+            <input 
+                type="file" 
+                ngf-select 
+                ng-model="file" 
+                name="file" 
+                ngf-pattern="'image/*'"
+                accept="image/*" 
+                ngf-max-size="20MB" 
+                />
+            Image thumbnail: <img style="width:100px;" ng-show="!!file" ngf-thumbnail="file || '/thumb.jpg'"/>
+            <i ng-show="upload_form.file.$error.required">*required</i><br>
+            <i ng-show="upload_form.file.$error.maxSize">File too large 
+            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+            <button type="submit" ng-click="submit()">submit</button>
+            <p>{{progress}}</p>
+        </form>
+</div>
+<div>
+    Search: <input class="form-control" type="text" ng-model="search.name" style="margin-bottom: 20px;">
+    <ul class="list menu">
+        <li ng-repeat="image in imageArray">
+            <img height="100" width="100" data-ng-src="{{image.img_src}}">{{image.img_src}}
+            <div class="panel panel-invisible">
+                <span>             
+                      <div class="task-text" ng-show="!editing[$index]">{{image.name}}</div><br>
+                </span>
+            </div>
+
+            <h5><b>Note:</b>{{image.note}}</h5>
+            <button  class="btn btn-default" ng-show="!editing[$index]" ng-click="edit($index)">edit</button>
+            <button  class="btn btn-default" ng-show="!editing[$index]" ng-click="remove($index)">remove</button><br>
+              <!-- editing part -->
+            <input class="form-control col-md-3 task-name" ng-show="editing[$index]" type="text" ng-model="image.name">
+            <textarea  class="form-control" ng-show="editing[$index]" rows="4" cols="50" placeholder="{{image.note}}" ng-model="image.note"></textarea><br></br>
+            <button  class="btn btn-default" ng-show="editing[$index]" ng-click="update($index)">update</button>
+            <button  class="btn btn-default"ng-show="editing[$index]" ng-click="cancel($index)">cancel</button>
+            <div ng-show="editing[$index]">
+                Uploaded file:{{fileName}}
+            </div>
+        </li>
+    </ul>
+
+     <span>
+          <h5 class="task-text">New task</h5><input class="form-control col-md-3" type="text" ng-model="newImage">
+          <button style="margin-top:10px;" class="btn btn-default" ng-click="save()">Create</button>
+      </span>
+</div>

@@ -1,0 +1,63 @@
+﻿
+        <div class="row" >
+		    <div class="col-md-1">
+		    	<button  type="button" class="btn btn-default btn-lg grey" ng-click="openAside('left', true)" style="margin-top: 15px;margin-left:15px">
+		              <span class="glyphicon glyphicon-align-justify white"></span>
+		         </button>
+		    </div>
+
+		    <div class="col-md-11">
+		    	 <h2 class="prisma font-80px" style="margin-top: 0px;">Welcome</h2>
+		    </div>
+    	</div>
+    	 <div id="content" ng-class="asideState.position" class="col-md-12 col-sm-12">
+					<p>This is a simple app that simulates a work with MongoDB, and a sending a email usimg SMTP</p>
+
+					<div class="span statbox1 purple col-md-5 col-sm-5" ng-click="navigateTodos()">
+						<div class="boxchart"><canvas width="64" height="100" style="display: inline-block; width: 64px; height: 100px; vertical-align: top;"></canvas></div>
+						<span style="white-space: nowrap;">
+							
+							<div class="title font-80px text-center vertical-center">
+								<i class="fa fa-calendar white"></i>
+								Todo
+							</div>
+						</span>
+
+					</div>
+	
+					<div class="span3 statbox green col-md-2 col-sm-2" ng-click="navigateMail()">
+						<div class="boxchart"><canvas width="64" height="60" style="display: inline-block; width: 64px; height: 60px; vertical-align: top;"></canvas></div>
+						<div class="title font-30px text-center vertical-center">
+							<i class="fa fa-envelope-o white"></i>
+								Mail
+						</div>
+					</div>
+
+					<div class="span3 statbox red col-md-2 col-sm-3" ng-click="navigateExample()">
+						<div class="boxchart"><canvas width="64" height="60" style="display: inline-block; width: 64px; height: 60px; vertical-align: top;"></canvas></div>
+						<div class="title font-30px text-center vertical-center">
+							<i class="fa fa-calendar white"></i>
+								Example
+						</div>
+					</div>
+
+					<div class="col-md-6">
+					</div>
+
+					<div class="span3 statbox blue col-md-1 col-sm-2" ng-click="logout()">
+						<div class="boxchart"><canvas width="64" height="60" style="display: inline-block; width: 64px; height: 60px; vertical-align: top;"></canvas></div>
+						<div class="title font-20px text-center vertical-center">
+							<i class="fa fa-sign-out white"></i>
+								Logout
+						</div>
+					</div>
+
+					<div class="span3 statbox yellow col-md-3 col-sm-3" ng-click="navigateImageUpload()">
+						<div class="boxchart"><canvas width="64" height="50" style="display: inline-block; width: 64px; height: 50px; vertical-align: top;"></canvas></div>
+						<div class="title font-40px text-center vertical-center">
+							<i class="fa fa-cutlery white"></i>
+								Cookbook
+						</div>
+					</div>
+				
+		 </div>

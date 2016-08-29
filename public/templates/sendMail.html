@@ -1,0 +1,33 @@
+<div>
+<!--from: 'App To Do<freakydevelopercat@gmail.com>', // sender address
+    to: 'ninafath@gmail.com', // list of receivers
+    subject: 'Hello ✔', // Subject line
+    text: 'This is a first object', // plaintext body
+    html: '<b>sooo bored</b>' // html body
+    }; -->
+
+
+  <div class="row" >
+        <div class="col-md-1">
+          <button  type="button" class="btn btn-default btn-lg grey" ng-click="openAside('left', true)" style="margin-top: 15px;margin-left:15px">
+                  <span class="glyphicon glyphicon-align-justify white"></span>
+             </button>
+        </div>
+
+        <div class="col-md-11">
+           <h2 class="prisma font-80px" style="margin-top: 0px;">Send mail</h2>
+        </div>
+  </div>
+
+	<div class="jumbotron">
+        <div>
+            From: <input class="form-control col-md-5" type="text" ng-model="from"/><br>
+            Subject: <input class="form-control col-md-5" type="text" ng-model="subject"/><br>
+            To:<input class="form-control col-md-5" type="text" ng-model="to"/><br>
+            Text:<input class="form-control col-md-5" type="text" ng-model="html"/><br>
+       </div>
+
+       <button ng-click="sendMail()">Send email</button>
+	</div>
+	<a ng-click="logout()" class="btn btn-link">Logout</a>
+</div>

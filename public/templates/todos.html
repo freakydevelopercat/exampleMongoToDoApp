@@ -1,0 +1,217 @@
+
+  <div class="row" >
+        <div class="col-md-1">
+          <button  type="button" class="btn btn-default btn-lg grey" ng-click="openAside('left', true)" style="margin-top: 15px;margin-left:15px">
+                  <span class="glyphicon glyphicon-align-justify white"></span>
+             </button>
+        </div>
+
+        <div class="col-md-11">
+           <h2 class="prisma font-80px" style="margin-top: 0px;">Todos</h2>
+        </div>
+  </div>
+
+  <div id="/todos.html" class="font-main">
+     Search: <input class="form-control" type="text" ng-model="search.name" style="margin-bottom: 20px;">
+     <input  type="radio" name="radAnswer" ng-click="activateFilterAll()" checked="checked">All tasks
+     <input  type="radio" name="radAnswer" ng-click="activateFilterCompleted()">Filter completed
+     <input  type="radio" name="radAnswer" ng-click="activateFilterUncompleted()">Filter unfinished
+     <ul class="list menu">
+        <li ng-repeat="todo in todos | filter: search | completed:activateCompleted:activateUncompleted:activateAll">
+           
+           <div ng-if='todo.state=="U"'>
+              <div class="panel  col-md-3">
+                <div class="panel-heading panel-undefined">
+                   <span>
+                    <input  type="checkbox" id="checkbox-{{todo._id}}" class="regular-checkbox big-checkbox checkbox-radius col-md-1" ng-model="todo.completed" ng-change="update($index)"/><label for="checkbox-{{todo._id}}"></label>
+
+                    <div ng-if = "todo.completed==false" >
+                       <div class="task-text">{{todo.name}}</div>
+                       <br>
+                    </div>
+                    <div ng-if = "todo.completed==true">
+                       <div class="task-text" ng-show="!editing[$index]"><strike>{{todo.name}}</strike></div>
+                       <br>
+                    </div>
+                 </span>
+
+                </div>
+
+                <div class="panel-body grey font-white" style="backround-color:white">
+                  <div class="col-md-12">Priority: Undefined</div>
+                  <h5 class="col-md-12"><b>Note:</b>{{todo.note}}</h5>
+                  <div class="col-md-8"></div>
+
+                  <div class="col-md-4" style="text-align: right">
+                     <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" ng-show="!editing[$index]" ng-click="edit($index)"></i>
+                     <i class="fa fa-times fa-lg" aria-hidden="true" ng-show="!editing[$index]" ng-click="remove($index)"></i>
+                  </div>
+                 
+
+                  <input class="form-control col-md-3 task-name" ng-show="editing[$index]" type="text" ng-model="todo.name">
+                  <textarea  class="form-control" ng-show="editing[$index]" rows="4" cols="50" placeholder="{{todo.note}}" ng-model="todo.note"></textarea>
+                  <br></br>
+                  <div class="col-md-12" style="text-align:right">
+                      <i class="fa fa-check-square-o fa-lg" aria-hidden="true" ng-show="editing[$index]" ng-click="update($index)"></i>
+                       <i class="fa fa-times fa-lg" aria-hidden="true" ng-show="editing[$index]" ng-click="cancel($index)"></i>
+                  </div>
+                  <div ng-show="editing[$index]">
+                      <select
+                         ng-model="priority.state"
+                         ng-options="state.lookupCode as state.description for state in list_state">
+                      </select>
+                      <tt>Priority selected: {{priority.state}}</tt>
+                  </div>
+                </div>
+
+                 
+
+              </div>
+           </div>
+
+           <div ng-if='todo.state=="M"'>
+              <div class="panel col-md-3">
+                 <div class="panel-heading panel-medium">
+                   <span>
+                      <input  type="checkbox" id="checkbox-{{todo._id}}" class="regular-checkbox big-checkbox checkbox-radius col-md-1" ng-model="todo.completed" ng-change="update($index)"/><label for="checkbox-{{todo._id}}"></label>
+                      <div ng-if = "todo.completed==false">
+                         <div class="task-text">{{todo.name}}</div>
+                         <br>
+                      </div>
+                      <div ng-if = "todo.completed==true">
+                         <div class="task-text" ng-show="!editing[$index]"><strike>{{todo.name}}</strike></div>
+                         <br>
+                      </div>
+                   </span>
+                 </div>
+                
+
+                 <div class="panel-body darkyellow">
+                     <div class="col-md-12"> Priority: Medium</div>
+                     <h5 class="col-md-12"><b>Note:</b>{{todo.note}}</h5>
+                     <div class="col-md-12" style="text-align:right">
+                        <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" ng-show="!editing[$index]" ng-click="edit($index)"></i>
+                        <i class="fa fa-times fa-lg" aria-hidden="true" ng-show="!editing[$index]" ng-click="remove($index)"></i>
+                     </div>
+                
+                      <!-- editting part -->
+                     <input class="form-control col-md-3 task-name" ng-show="editing[$index]" type="text" ng-model="todo.name">
+                      <textarea  class="form-control" ng-show="editing[$index]" rows="4" cols="50" placeholder="{{todo.note}}" ng-model="todo.note"></textarea>
+                      <br></br>
+                      <div class="col-md-12" style="text-align:right">
+                        <i class="fa fa-check-square-o fa-lg" aria-hidden="true" ng-show="editing[$index]" ng-click="update($index)"></i>
+                         <i class="fa fa-times fa-lg" aria-hidden="true" ng-show="editing[$index]" ng-click="cancel($index)"></i>
+                      </div>
+                      <div ng-show="editing[$index]">
+                          <select
+                             ng-model="priority.state"
+                             ng-options="state.lookupCode as state.description for state in list_state">
+                          </select>
+                          <tt>Priority selected: {{priority.state}}</tt>
+                      </div>
+                 </div>
+                 
+              </div>
+           </div>
+
+           <div ng-if='todo.state=="H"'>
+              <div class="panel col-md-3">
+                <div class="panel-heading panel-high">
+                  <span>
+                    <input  type="checkbox" id="checkbox-{{todo._id}}" class="regular-checkbox big-checkbox checkbox-radius col-md-1" ng-model="todo.completed" ng-change="update($index)"/><label for="checkbox-{{todo._id}}"></label>
+                    <div ng-if = "todo.completed==false">
+                       <div class="task-text">{{todo.name}}</div>
+                       <br>
+                    </div>
+                    <div ng-if = "todo.completed==true">
+                       <div class="task-text" ng-show="!editing[$index]"><strike>{{todo.name}}</strike></div>
+                       <br>
+                    </div>
+                 </span>
+                </div>
+                <div class="panel-body darkred">
+                    <div class="col-md-12">Priority: High</div>
+                   <h5 class="col-md-12"><b>Note:</b>{{todo.note}}</h5>
+                   <div class="col-md-12" style="text-align:right">
+                      <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" ng-show="!editing[$index]" ng-click="edit($index)"></i>
+                      <i class="fa fa-times fa-lg" aria-hidden="true" ng-show="!editing[$index]" ng-click="remove($index)"></i>
+                   </div>
+
+                    <!-- editting part -->
+                    <input class="form-control col-md-3 task-name" ng-show="editing[$index]" type="text" ng-model="todo.name">
+                     <textarea  class="form-control" ng-show="editing[$index]" rows="4" cols="50" placeholder="{{todo.note}}" ng-model="todo.note"></textarea>
+                     <br></br>
+                      <div class="col-md-12" style="text-align:right">
+                        <i class="fa fa-check-square-o fa-lg" aria-hidden="true" ng-show="editing[$index]" ng-click="update($index)"></i>
+                         <i class="fa fa-times fa-lg" aria-hidden="true" ng-show="editing[$index]" ng-click="cancel($index)"></i>
+                      </div>
+                     <div ng-show="editing[$index]">
+                        <select
+                           ng-model="priority.state"
+                           ng-options="state.lookupCode as state.description for state in list_state">
+                        </select>
+                        <tt>Priority selected: {{priority.state}}</tt>
+                     </div>
+                </div>
+                 
+         
+
+              </div>
+           </div>
+
+           <div ng-if='todo.state=="L"'>
+              <div class="panel col-md-3">
+                <div class="panel-heading panel-low">
+                    <span>
+                      <input  type="checkbox" id="checkbox-{{todo._id}}" class="regular-checkbox big-checkbox checkbox-radius col-md-1" ng-model="todo.completed" ng-change="update($index)"/><label for="checkbox-{{todo._id}}"></label>
+                      <div ng-if = "todo.completed==false">
+                         <div class="task-text">{{todo.name}}</div>
+                         <br>
+                      </div>
+                      <div ng-if = "todo.completed==true">
+                         <div class="task-text" ng-show="!editing[$index]"><strike>{{todo.name}}</strike></div>
+                         <br>
+                      </div>
+                  </span>
+                </div>
+         
+                <div class="panel-body darkgreen">
+                   <div class="col-md-12">Priority: Low </div>
+                   <h5 class="col-md-12"><b>Note:</b>{{todo.note}}</h5>
+                   <div class="col-md-12" style="text-align:right">
+                      <i class="fa fa-lg fa-pencil-square-o fa-lg" aria-hidden="true" ng-show="!editing[$index]" ng-click="edit($index)"></i>
+                      <i class="fa fa-lg fa-times fa-lg" aria-hidden="true" ng-show="!editing[$index]" ng-click="remove($index)"></i>
+                   </div>
+
+                <!-- editting part -->
+                 <input class="form-control col-md-3 task-name" ng-show="editing[$index]" type="text" ng-model="todo.name">
+                 <textarea  class="form-control" ng-show="editing[$index]" rows="4" cols="50" placeholder="{{todo.note}}" ng-model="todo.note"></textarea>
+                 <br></br>
+                  <div class="col-md-12" style="text-align:right">
+                        <i class="fa fa-check-square-o fa-lg" aria-hidden="true" ng-show="editing[$index]" ng-click="update($index)"></i>
+                         <i class="fa fa-times fa-lg" aria-hidden="true" ng-show="editing[$index]" ng-click="cancel($index)"></i>
+                      </div>
+                 <div ng-show="editing[$index]">
+                    <select
+                       ng-model="priority.state"
+                       ng-options="state.lookupCode as state.description for state in list_state">
+                    </select>
+                    <tt>Priority selected: {{priority.state}}</tt>
+                 </div>
+                </div>
+                
+              </div>
+           </div>
+
+        </li>
+     </ul>
+
+
+     <span class="col-md-12">
+        <h5 class="task-text ">New task</h5>
+        <input class="form-control" type="text" ng-model="newTodo">
+        <button style="margin-top:10px;" class="btn btn-default" ng-click="save()">Create</button>
+        <button style="margin-top:10px;" class="btn btn-default" ng-click="logout()">Logout</button>
+     </span>
+</div>
+
